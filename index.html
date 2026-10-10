@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adugnaw Mulu - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b051d;
+            color: #ffffff;
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(18, 10, 40, 0.4) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(18, 10, 40, 0.4) 1px, transparent 1px);
+            background-size: 30px 30px;
+            padding-top: 90px;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 5, 29, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(147, 51, 234, 0.2);
+        }
+
+        .logo {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 600;
+            font-family: cursive;
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff79c6;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #d8b4fe;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-family: cursive;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #f3e8ff;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .profile-img-glow {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #ff2e93, #7800ff, #00d2ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(120, 0, 255, 0.4);
+        }
+
+        .profile-img-glow img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-content > h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #e2e8f0;
+            margin-bottom: 5px;
+        }
+
+        .hero-content > h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ff79c6, #bd93f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(120, 0, 255, 0.15);
+            border: 1px solid rgba(189, 147, 249, 0.3);
+            color: #d8b4fe;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 18px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            color: #94a3b8;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff79c6;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .contact-btn {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        .portfolio-btn {
+            background: linear-gradient(135deg, #db2777, #9333ea);
+            color: #ffffff;
+        }
+
+        .about-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .about-img-box {
+            flex-shrink: 0;
+        }
+
+        .about-img-box img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .grid-card {
+            background: rgba(20, 10, 45, 0.6);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 16px;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: border-color 0.3s;
+        }
+
+        .grid-card:hover {
+            border-color: #a855f7;
+        }
+
+        .grid-card i {
+            font-size: 2.5rem;
+        }
+
+        .grid-card span {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .interest-card {
+            background: rgba(20, 10, 45, 0.6);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 16px;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .interest-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff2e93, #7800ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(120, 0, 255, 0.5);
+        }
+
+        .interest-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #f3e8ff;
+        }
+
+        .interest-card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .project-card {
+            background: rgba(20, 10, 45, 0.6);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .project-header h3 {
+            font-size: 1.2rem;
+            color: #f3e8ff;
+        }
+
+        .visit-btn {
+            background: linear-gradient(135deg, #db2777, #9333ea);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-stack {
+            font-size: 0.8rem;
+            color: #a855f7;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .project-preview {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .project-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-form {
+            background: rgba(20, 10, 45, 0.6);
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            background: rgba(10, 5, 25, 0.8);
+            border: 1px solid rgba(147, 51, 234, 0.4);
+            border-radius: 8px;
+            padding: 14px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #a855f7;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #db2777, #9333ea);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="#home" class="logo">&lt;Adugnaw Mulu /&gt;</a>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#tools">Tools</a>
+            <a href="#interests">Interests</a>
+            <a href="#projects">Project</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h3>Hello, I'm</h3>
+            <h1>Adugnaw Mulu</h1>
+            <div class="badge"><i class="fa-solid fa-sparkles"></i> Frontend Developer</div>
+            <p>Passionate frontend developer dedicated to building clean, responsive websites and templates. I love transforming creative concepts into engaging and seamless digital experiences that users can truly enjoy.</p>
+            <div class="social-icons">
+                <a href="https://github.com/adubest2978-hash" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <!--<a href="https://twitter.com/YOUR_USERNAME" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>-->
+                <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+               <a href="https://wa.me/251929788922" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+               <!-- <a href="https://youtube.com/@YOUR_CHANNEL" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>-->
+            </div>
+            <div class="hero-btns">
+                <a href="#contact" class="btn contact-btn"><i class="fa-regular fa-envelope"></i> Contact Me</a>
+                <a href="#projects" class="btn portfolio-btn">View Portfolio <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="profile-container">
+            <div class="profile-img-glow">
+                <img src="images/adu69.jpg" alt="Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <section class="section about-section" id="about">
+        <span class="section-tag">But who am I?</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">hello,there this is about me ;)</p>
+        <div class="about-card">
+            <div class="about-img-box">
+                <img src="IMG.jpg" alt="About Me">
+            </div>
+            <p class="about-text">
+                Hey there, I'm Adugnaw, a coding enthusiast from Ethiopia. I'm currently balancing my university studies with my full-time journey as a frontend web developer. My coding journey began with experimenting on small projects. Now, I'm pursuing software engineering to deepen my skills and passion for web development.
+            </p>
+        </div>
+    </section>
+
+    <section class="section skills-section" id="skills">
+        <span class="section-tag">What do I know?</span>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">Here are some of the technologies that are part of my current stack:</p>
+        <div class="grid-container">
+            <div class="grid-card"><i class="fa-brands fa-html5" style="color: #e34f26;"></i><span>HTML</span></div>
+            <div class="grid-card"><i class="fa-brands fa-css3-alt" style="color: #1572b6;"></i><span>CSS</span></div>
+            <div class="grid-card"><i class="fa-brands fa-js" style="color: #f7df1e;"></i><span>JS</span></div>
+            <div class="grid-card"><i class="fa-brands fa-node-js" style="color: #339933;"></i><span>NodeJS</span></div>
+            <div class="grid-card"><i class="fa-solid fa-code" style="color: #61dafb;"></i><span>ExpressJS</span></div>
+            <div class="grid-card"><i class="fa-solid fa-server" style="color: #a855f7;"></i><span>EJS</span></div>
+        </div>
+    </section>
+    <section class="section tools-section" id="tools">
+        <span class="section-tag">What I uses?</span>
+        <h2 class="section-title">Tools</h2>
+        <p class="section-subtitle">Tech stack known? Here are tools that I runs:</p>
+        <div class="grid-container">
+            <div class="grid-card"><i class="fa-solid fa-code" style="color: #007acc;"></i><span>VSCode</span></div>
+            <div class="grid-card"><i class="fa-brands fa-github" style="color: #ffffff;"></i><span>Github</span></div>
+            <div class="grid-card"><i class="fa-solid fa-palette" style="color: #00c4cc;"></i><span>Canva</span></div>
+            <div class="grid-card"><i class="fa-brands fa-figma" style="color: #f24e1e;"></i><span>Figma</span></div>
+            <div class="grid-card"><i class="fa-solid fa-robot" style="color: #10a37f;"></i><span>ChatGPT</span></div>
+            <div class="grid-card"><i class="fa-solid fa-wand-magic-sparkles" style="color: #3b82f6;"></i><span>Gemini</span></div>
+        </div>
+    </section>
+
+    <section class="section interests-section" id="interests">
+        <span class="section-tag">Interests</span>
+        <h2 class="section-title">Things I Love</h2>
+        <div class="interest-card">
+            <div class="interest-icon"><i class="fa-solid fa-droplet"></i></div>
+            <h3>Designing</h3>
+            <p>I love designing. When I see something that needs improvement, I enjoy making it better visually. My goal is to create designs that catch the eye and inspire others.</p>
+        </div>
+        <div class="interest-card">
+            <div class="interest-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Developing</h3>
+            <p>After designing, I dive into development. Coding is where I bring designs to life, turning concepts into digital experiences with functionality and elegance.</p>
+        </div>
+    </section>
+
+    <section class="section projects-section" id="projects">
+        <span class="section-tag">What I've done?</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="project-card">
+            <div class="project-header">
+                <h3>Pool Management System</h3>
+                <a href="https://github.com/adubest2978/pool-management" target="_blank" class="visit-btn">Visit <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <p class="project-stack">HTML | CSS | JavaScript</p>
+            <p class="project-desc">A comprehensive web system designed to manage  customer records in a game zone smoothly and efficiently.</p>
+            <div class="project-preview">
+                <img src="S(1).jpg" alt="Pool Management System">
+            </div>
+        </div>
+        <div class="project-card">
+            <div class="project-header">
+                <h3>JavaScript Calculator</h3>
+                <a href="https://github.com/adubest2978-hash/js-calculator" target="_blank" class="visit-btn">Visit <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <p class="project-stack">HTML | CSS | JavaScript</p>
+            <p class="project-desc">A clean and fast calculator I put together to handle everyday math tasks smoothly with a sleek, user-friendly interface.</p>
+            <div class="project-preview">
+                <img src="calc.jpg" alt="JavaScript Calculator">
+            </div>
+        </div>
+        <div class="project-card">
+            <a href="https://github.com/adubest2978-hash/image-gallery" target="_blank" class="visit-btn">Visit <i class="fa-solid fa-arrow-right"></i></a>
+            <p class="project-stack">HTML | CSS | JavaScript</p>
+            <p class="project-desc">A responsive gallery designed to showcase high-resolution photos nicely, featuring smooth layouts and easy browsing.</p>
+            <div class="project-preview">
+                <img src="gallery.png" alt="Image Gallery">
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <span class="section-tag">What's next?</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Interested in working together? We should schedule a time to chat. I'll bring the coffee.</p>
+        <form class="contact-form" action="mailto:adubest2978@gmail.com" method="POST" enctype="text/plain">
+            <div class="input-group">
+                <input type="text" name="Name" placeholder="Name *" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="Email" placeholder="Email *" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="Subject" placeholder="Subject *" required>
+            </div>
+            <div class="input-group">
+                <textarea name="Message" rows="5" placeholder="Your message *" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Email <i class="fa-regular fa-envelope"></i></button>
+        </form>
+    </section>
+</body>
+</html>
